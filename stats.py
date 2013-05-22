@@ -1,3 +1,7 @@
+"""A simple little script to plot the changes in the number of lines
+   in a git repository over time
+"""
+
 import argparse
 from subprocess import Popen, PIPE
 
