@@ -1,7 +1,7 @@
 """A simple little script to plot the changes in the number of lines
    in a git repository over time
 """
-
+import locale
 import argparse
 from subprocess import Popen, PIPE
 
@@ -14,7 +14,8 @@ def obtain_git_shortlog():
   output, errorout = process.communicate()
   if process.returncode != 0:
     raise StandardError("Running git to obtain short log failed")
-  return output
+  encoding = locale.getdefaultlocale()[1]
+  return output.decode(encoding)
 
 def analyse_statistics():
   git_output = obtain_git_shortlog()
