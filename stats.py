@@ -43,9 +43,10 @@ def analyse_statistics():
   for line in file_lines:
     words = line.split()
     insertions = int(words[3])
-    deletions = int(words[5])
     number_of_lines += insertions
-    number_of_lines -= deletions
+    if len(words) > 5:
+        deletions = int(words[5])
+        number_of_lines -= deletions
 
     after_each_commit.append(number_of_lines)
 
